@@ -9,7 +9,7 @@ csv_prefixes = df['prefix'].values
 # print(csv_prefixes)
 # print(folder_files)
 
-# Check if prefix (e.g. 1234) is valid
+# Check if prefix (e.g. 12010) is valid
 def check_prefix(filename: str):
     try:
         int(filename[:5])
@@ -18,7 +18,7 @@ def check_prefix(filename: str):
     else:
         return True
 
-# Check if suffix (e.g. 10310) is valid
+# Check if suffix (e.g. 9325) is valid
 def check_suffix(filename: str):
     if filename[-8:][:4] == PROJECT_SUFFIX:
         return True
