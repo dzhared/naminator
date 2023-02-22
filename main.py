@@ -1,13 +1,12 @@
 import os
 import pandas
+from ui import *
 
-PROJECT_SUFFIX = "6935"
+project_suffix = "6935"
 
 df = pandas.read_csv("reference.csv")
 folder_files = os.listdir("files-reference")
 csv_prefixes = df['prefix'].values
-# print(csv_prefixes)
-# print(folder_files)
 
 # Check if prefix (e.g. 12010) is valid
 def check_prefix(filename: str):
@@ -20,15 +19,17 @@ def check_prefix(filename: str):
 
 # Check if suffix (e.g. 9325) is valid
 def check_suffix(filename: str):
-    if filename[-8:][:4] == PROJECT_SUFFIX:
+    if filename[-8:][:4] == project_suffix:
         return True
     else:
         return False
 
-# FORMAT: 00000 - 00-NN000 NNNNNNNNNN - 0000.pdf
-# Retrieve data row by prefix value. Do this for sheets
-# that have been verified to have "12345 - " prefix and
-# " - 6789.pdf" suffix.
+"""
+FORMAT: 00000 - 00-NN000 NNNNNNNNNN - 0000.pdf
+Retrieve data row by prefix value. Do this for sheets
+that have been verified to have "12345 - " prefix and
+" - 6789.pdf" suffix.
+"""
 
 # Retrieves, returns row from dataframe by sheet prefix
 def row_by_prefix(prefix: int):
@@ -71,10 +72,5 @@ def sort(folder_files: list):
         else:
             print(f"BAD OTHER:  {filename}")
 
-# Import list of files from folder
-# Check 1: prefix formatting
-# Check 2: suffix formatting
-# If clears both checks:
-
 sort(folder_files)
-
+root.mainloop()
